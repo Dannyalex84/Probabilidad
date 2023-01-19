@@ -52,3 +52,69 @@ PROPIEDADES AXIOMAS:
 Certeza: P = 1
 Imposibilidad P = 0
 Disyunción P(AuB) = P(A) +P(B)
+
+
+Probabilidad en Machine Learning
+¿Cuáles son las fuentes de incertidumbre?
+
+Datos: Debido a que nuestros instrumentos de medición tienen un margen de error, se presentan datos imperfectos e incompletos, por lo tanto hay incertidumbre en los datos.
+Atributos del modelo: Son variables que representan un subconjunto reducido de toda la realidad del problema, estas variables provienen de los datos y por lo tanto presentan cierto grado de incertidumbre.
+Arquitectura del modelo: Un modelo en mates es una representación simplificada de la realidad y al ser así, por construcción, induce otra capa de incertidumbre, ya que al ser una representación simplificada se considera mucho menos información.
+
+Probabilidad en Machine Learning
+La incertidumbre en Machine Learning son:
+
+Datos: los procesos de medición de datos son imperfectos, eso genera que haya incertidumbre.
+
+Atributos de un modelo: un modelo de alimenta de atributos o variables que son predictores, esas variables son un subconjunto reducido del problema que queremos aplicar. Esa reducción de variables generan incertidumbre.
+
+Arquitectura del modelo: un modelo es una representación simplificada de la realidad, por tener una simplificación hay menos información y eso genera incertidumbre.
+Por ejemplo
+Si tenemos unos documentos y queremos clasificarlos por los temas que son, tenemos que usar un clasificador probabilístico.
+
+El modelo de clasificación seria:
+Tenemos un documento con etiquetas que doce que tema, passa por una función que es el extractor de elementos, o sea simplifica variables, los elementos fundamentales.
+Luego pasa como atributos, puede ser vector.
+Luego se pasa como input al algoritmo de clasificación y nos da el resultado de la etiqueta.
+Así es el proceso de entrenamiento.
+Todas las etapas de un modelo de cierto modo involucran probabilidad. Antes del extractor de atributos y todo, escogemos nuestra arquitectura o diseño del modelo que vamos a usar, escogemos si usamos probabilidad o no.
+Definimos el entrenamiento que el modelo va aprender. El concepto de distribución de probabilidad, es para saber que probabilidades asignamos a cada una de las posibles ocurrencias de los datos. Existe el esquema MLE (Estimación de Máxima Verosimilitud) una técnica probabilística.
+Calibración, los hiper-parámetros escogen cual de todos las familias funciona mejor y generan el menor margen de error.
+Luego esta la predicción o interpretación y al final el resultado.
+
+Correlación entre sucesos:
+Decimos que dos sucesos están correlacionados si la ocurrencia de uno varía difectamente sobre la probabilidad del otro, pueden ser:
+
+Correlación positiva: la ocurrencia de un suceso incrementa la probabilidad de ocurrencia del otro
+Correlación negativa: la ocurrencia de un suceso disminuye la probabilidad de ocurrencia del otro
+
+
+Estimacion de Maxima verosimilitud (MLE)
+Estimar la distribucion de probabilidad de un conjunto de datos es un proceso muy importante en probabilidad.
+
+MLE es un framework o esquema de trabajo para estimacion de densidades de probabilidad.
+
+Elementos de MLE
+
+Escoger la distribucion teniendo solo una muestra de los datos
+Escoger los parametros de la distribucion que mejor ajustan la distribucion a los datos
+Existe un problema general de MLE: los datos obedecen a una distribucion de probabilidad de una poblacion enorme, pero nunca se va a tener todo el conocimiento de esa poblacion por lo que la distribucion de probabilidad de la muestra es diferente a la de la poblacion. Esto dificulta resolver el problema general asociado a toda la poblacion generando restricciones:
+
+Restriccion 1: escoger la Distribucion de probabilidad sobre una muestra de datos
+
+Luego de seleccionada la muestra y la distribucion, ajustamos los parametros de la distribucion de manera que podamos encontrar la distribucion que mejor se ajuste a los datos (Es un problema de Machine Learning)
+
+El MLE es un problema de optimizacion
+
+Esquema de trabajo
+
+Tenemos un conjunto de datos X y conjunto de parametros de la distribucion que queremos ajustar
+Existe una probabilidad de ajustar los datos a una distribucion en concreto, lo cual genera otra distribucion de probabilidad que llamamos L
+
+Como existen muchos conjuntos de parametros que van a permiter ajustar los datos con diferentes grados de probabilidad, se escoge aquella combinacion cuya probabilidad es la maxima posible
+La distribucion de probabilidad sobre el conjunto de datos X, a veces, se puede factorizar como el productos de varias probabilidades donde cada probabilidad corresponde a cada valor de X
+
+Cuando se factoriza las probabilidades que son numeros pequeños, se obtiene un numero cada vez mas pequeño lo cual genera un problema en las computadoras conocido como underflow
+Para resolverlo, se aplica el logaritmo a las probabilidades ya que los logaritmos tienen una propiedad interesante: el logaritmo de un producto es la suma de los logaritmos. Esto convierte el problema de multiplicaciones a sumas lo cual es mas facil de computar
+
+Finalmente se calcula el maximo del logaritmo de la verosimilitud L que es igual a calcular el maximo de sumar los logaritmos de las probabilidades individuales donde cada probabilidad corresponde a un valor de X y theta
